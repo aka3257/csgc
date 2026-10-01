@@ -17,7 +17,7 @@ community-hosted TCP server.
 CSGC is a **client** — a `csgc.dll` plus a launcher that hooks into
 CS:GO Legacy and replaces the official `ISteamGameCoordinator`
 interface. Instead of talking to Valve's CS2 GC servers, the game
-talks to **your** server.
+talks to **other community-hosted** server.
 
 **This repo does NOT include the server.** The server is a separate
 project:
