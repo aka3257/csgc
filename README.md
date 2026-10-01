@@ -28,8 +28,7 @@ project:
 
 1. Download the latest prebuilt release from Releases.
 2. Extract zip into your CS:GO Legacy folder with **replace**.
-3. Start the [CSGO-GC-Replacement](https://github.com/aka3257/CSGO-GC-Replacement) server.
-4. Launch CS:GO through Steam.
+3. Launch CS:GO through Steam.
 
 ## Building from source
 
