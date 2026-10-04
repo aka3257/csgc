@@ -3,8 +3,6 @@
 #include <cstdio>
 #include "log.h"
 
-// Обязательные экспорты для обхода проверок целостности CS:GO
-// Без них игра может крашнуться или проигнорировать загрузку
 extern "C" __declspec(dllexport) DWORD NvOptimusEnablement = 1;
 extern "C" __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
 extern "C" __declspec(dllexport) bool BSecureAllowed(unsigned char*, int, int) { return true; }
