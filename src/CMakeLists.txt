@@ -5,7 +5,8 @@ add_library(csgc SHARED
     main.cpp
     forwarder.cpp
     platform.cpp
-    steam_hook_lite.cpp
+    crash_report.cpp
+    steam_hook.cpp
 )
 
 target_include_directories(csgc PRIVATE
@@ -23,6 +24,12 @@ if(WIN32)
         Psapi.lib
         ws2_32
     )
+    # Карта линковки: по RVA из дампа сразу находим имя функции в csgc.dll
+    # (tools/crashlab.py map dist/csgc/csgc.map 0x1234).
+    target_link_options(csgc PRIVATE "/MAP:${CMAKE_SOURCE_DIR}/dist/csgc/csgc.map")
+    # /Oy- — не выбрасывать frame pointer: по дампам получаются нормальные стеки.
+    target_compile_options(csgc PRIVATE /Oy-)
+    target_link_options(csgc PRIVATE /DEBUG)
 endif()
 
 set_target_properties(csgc PROPERTIES
@@ -32,4 +39,5 @@ set_target_properties(csgc PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_SOURCE_DIR}/dist/csgc"
     RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_SOURCE_DIR}/dist/csgc"
     RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL    "${CMAKE_SOURCE_DIR}/dist/csgc"
+    PDB_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/dist/csgc"
 )

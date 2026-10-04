@@ -12,14 +12,12 @@ void Platform_Print(const char *format, ...)
     vsnprintf(buffer, sizeof(buffer), format, ap);
     va_end(ap);
     
-    // ВСЕГДА пишем в файл
     FILE *f = fopen("C:\\csgc_log.txt", "a");
     if (f) {
         fprintf(f, "[GC] %s\n", buffer);
         fclose(f);
     }
     
-    // И пробуем в консоль игры
     HMODULE tier0 = GetModuleHandleW(L"tier0.dll");
     if (tier0) {
         auto ConColorMsg = (void(*)(const uint8_t*, const char*, ...))GetProcAddress(tier0, "?ConColorMsg@@YAXABVColor@@PBDZZ");
