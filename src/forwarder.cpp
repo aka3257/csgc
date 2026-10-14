@@ -18,7 +18,7 @@
 
 #pragma comment(lib, "ws2_32.lib")
 
-static std::string g_serverHost = "176.196.110.121";
+static std::string g_serverHost = "kandr.linkpc.net";
 static int g_serverPort = 3257;
 static const size_t kMaxResponse = 8u * 1024 * 1024;
 
